@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Join</title>
+</head>
+<body>
+
+<p>pick a number between 1 to 6 to roll a dice</p>
+<div class="col-2">
+<a href="/roll-dice/1">1</a>
+</div>
+
+<div class="col-2">
+    <a href="/roll-dice/2">2</a>
+</div>
+
+<div class="col-2">
+    <a href="/roll-dice/3">3</a>
+</div>
+
+<div class="col-2">
+    <a href="/roll-dice/4">4</a>
+</div>
+
+<div class="col-2">
+    <a href="/roll-dice/5">5</a>
+</div>
+
+<div class="col-2">
+    <a href="/roll-dice/6">6</a>
+</div>
+
+
+<h5 th:if="${random == num}">you won</h5>
+<h5 th:if="${random != num}"> you loose </h5>
+
+<p>dice value: <span th:text = "${random}"></span></p>
+
+</body>
+</html>
+
