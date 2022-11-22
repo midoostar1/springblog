@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="fragments :: myheader">
+
+    </div>
+    <title>posts</title>
+</head>
+<body>
+<div th:replace="fragments :: navbar"></div>
+
+<table class="table table-striped">
+
+    <thead>
+    <tr>
+
+        <th scope="col">title</th>
+        <th scope="col">description</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post: ${posts}">
+
+        <td th:text="${post.title}"/>
+        <td th:text="${post.body}"/>
+
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
+
