@@ -1,12 +1,21 @@
-package models;
+package com.example.haskellsprinblog.models;
 
+
+import javax.persistence.*;
+
+@Entity
 public class Post {
 
 
 
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private long id;
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private String body;
 
 
@@ -19,7 +28,7 @@ public class Post {
         this.body = body;
     }
 
-    public Post(long id, String title, String body) {
+    public Post(Long id, String title, String body) {
         this.id = id;
         this.title = title;
         this.body = body;
@@ -28,11 +37,11 @@ public class Post {
 
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="fragments :: myheader">
+
+    </div>
+    <title>posts</title>
+</head>
+<body>
+<div th:replace="fragments :: navbar"></div>
+
+
+<div class="container ">
+
+    <div class="note">
+        <p>Create a new Post</p>
+    </div>
+
+    <form method="post" action="/posts/create">
+        <div class="col-md-6 m-3">
+        <div class="form-group  row">
+            <label class="form-label col-2" for="title">Post title</label>
+            <input id="title" type="text" class="form-control col" placeholder="title *" name="title"/>
+        </div>
+        </div>
+
+        <div class="col-md-6 m-3">
+            <div class="form-group row">
+                <label class="form-label col-2" for="body">Description</label>
+                <input  id="body" type="text" class="form-control col" placeholder="Post body *" name="body"/>
+            </div>
+
+        </div>
+<div class="col-md-6 text-center m-3">
+        <button type="submit" class="btn btn-primary text-center">Submit</button>
+</div>
+    </form>
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.example.haskellsprinblog;
 
-import models.Post;
+import com.example.haskellsprinblog.models.Post;
+import com.example.haskellsprinblog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,14 +9,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.ArrayList;
-
 @Controller
 public class PostController {
 
+    private final PostRepository postDao;
+
+    public PostController(PostRepository postDao) {
+        this.postDao = postDao;
+    }
+
+
     @RequestMapping(method = RequestMethod.GET,path= "/posts")
     public String posts(Model model){
-        ArrayList<Post> post = new ArrayList<>();
+       List<Post> post = postDao.findAll();
         post.add(new Post("iphone","Brand new a a cheap price"));
         post.add(new Post("55inch Sansung Tv","Brand new a a cheap price"));
 
@@ -27,7 +33,7 @@ public class PostController {
 
     @RequestMapping(path = "/posts/{id}", method = RequestMethod.GET)
 
-        public String byId(@PathVariable int id, Model model){
+        public String byId(@PathVariable long id, Model model){
          Post post = new Post(id,"first post","first time studying spring");
 
 model.addAttribute("post", post);
@@ -37,16 +43,20 @@ model.addAttribute("post", post);
 
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
-    @ResponseBody
+
     public String create(){
-        return "view the form for creating a post";
+        return "posts/create";
     }
 
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-    @ResponseBody
-    public String createPosts(){
-        return "view the form for creating a post";
+
+
+
+    public String createPosts(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body, Model model){
+      Post post = new Post(title,body);
+       postDao.save(post);
+        return "redirect:/posts";
     }
 
 
