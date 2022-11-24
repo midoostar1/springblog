@@ -9,7 +9,7 @@ public class Post {
 
 
 @Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+@GeneratedValue()
     private Long id;
 
     @Column(nullable = false)
@@ -17,6 +17,12 @@ public class Post {
 
     @Column(nullable = false)
     private String body;
+
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+  private User user;
+
+
 
 
     public Post(){

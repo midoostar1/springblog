@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -22,8 +23,6 @@ public class PostController {
     @RequestMapping(method = RequestMethod.GET,path= "/posts")
     public String posts(Model model){
        List<Post> post = postDao.findAll();
-        post.add(new Post("iphone","Brand new a a cheap price"));
-        post.add(new Post("55inch Sansung Tv","Brand new a a cheap price"));
 
         model.addAttribute("posts",post);
 
@@ -33,8 +32,8 @@ public class PostController {
 
     @RequestMapping(path = "/posts/{id}", method = RequestMethod.GET)
 
-        public String byId(@PathVariable long id, Model model){
-         Post post = new Post(id,"first post","first time studying spring");
+        public String byId(@PathVariable Long id, Model model){
+         Post post = postDao.getById(id);
 
 model.addAttribute("post", post);
         return "posts/show";
