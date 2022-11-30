@@ -20,7 +20,7 @@ public class Post {
 
     @ManyToOne
     @JoinColumn (name = "user_id")
-  private User owner;
+  private User user;
 
 
 
@@ -29,10 +29,10 @@ public class Post {
 
     }
 
-    public Post(String title, String body,User owner) {
+    public Post(String title, String body,User user) {
         this.title = title;
         this.body = body;
-        this.owner = owner;
+        this.user = user;
     }
     public Post(String title, String body) {
         this.title = title;
@@ -74,11 +74,11 @@ public class Post {
         this.body = body;
     }
 
-    public User getOwner() {
-        return owner;
+    public User getUser() {
+        return user;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setOwner(User user) {
+        this.user = user;
     }
 }

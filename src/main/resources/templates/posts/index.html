@@ -7,19 +7,17 @@
 </head>
 <body>
 <div th:replace="fragments :: navbar"></div>
+<div class="row row-cols-4">
 
-<div class="col-lg-4 mb-4">
-    <div th:each="post: ${posts}"  class="card">
-        <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
+<div th:each="post: ${posts}" class="col-lg-4 mb-4">
+    <div   class="card card-outline-secondary">
         <div class="card-body">
             <h5 class="card-title" th:text="${post.title}"/>
             <p class="card-text" th:text="${post.body}"/>
-            <a href="" class="btn btn-outline-success btn-sm">Read More</a>
-            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
         </div>
     </div>
 </div>
-
+</div>
 <div th:replace="fragments :: jsFile"></div>
 
 </body>

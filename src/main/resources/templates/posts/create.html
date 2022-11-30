@@ -12,33 +12,36 @@
 
 <div class="container ">
 
-    <div class="note">
-        <p>Create a new Post</p>
+
+    <hr class="mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <span class="anchor" id="createPost"></span>
+            <!-- form card login -->
+            <div class="card card-outline-secondary">
+                <div class="card-header">
+                    <h3 class="mb-0">Create a new Post</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/posts/create}" th:method="POST" th:object="${post}" autocomplete="off" class="form" id="formCreate"  role="form">
+                        <div class="form-group">
+                            <label for="post-title">Post title</label>
+                            <input th:field="*{title}" class="form-control" id="post-title"  required="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="post-body">Description</label>
+                            <input th:field="*{body}" autocomplete="description" class="form-control" id="post-body" required="" type="text" >
+                        </div>
+
+                        <button class="btn btn-success btn-lg float-right" type="submit" value="CreatePost">Submit</button>
+                    </form>
+                </div><!--/card-block-->
+            </div><!-- /form card login -->
+        </div>
     </div>
 
-    <form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
-        <div class="col-md-6 m-3">
-        <div class="form-group  row">
-            <label class="form-label col-2" for="title">Post title</label>
-            <input th:field="*{title}" id="title" type="text" class="form-control col" placeholder="title *" />
-        </div>
-        </div>
-
-        <div class="col-md-6 m-3">
-            <div class="form-group row">
-                <label class="form-label col-2" for="body">Description</label>
-                <input th:field="*{body}" id="body" type="text" class="form-control col" placeholder="Post body *" />
-            </div>
-
-        </div>
-<div class="col-md-6 text-center m-3">
-        <button type="submit" class="btn btn-primary text-center">Submit</button>
 </div>
-    </form>
-</div>
-
-
-
 
 </body>
 </html>
